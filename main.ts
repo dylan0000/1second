@@ -25,7 +25,7 @@ namespace myTiles {
 `
 }
 sprites.onOverlap(SpriteKind.boom, SpriteKind.Enemy, function (sprite, otherSprite) {
-    info.player2.changeScoreBy(-1)
+    info.player2.changeScoreBy(Math.randomRange(-1, -2))
     sprite.destroy()
     if (info.player2.score() == 1) {
         boss.destroy(effects.disintegrate, 1000)
@@ -55,20 +55,131 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . f f f f . . . . . . 
-. . . . . f 5 5 5 5 f . . . . . 
-. . . . f 5 5 5 5 5 5 f . . . . 
-. . . . f 5 f 5 5 f 5 f . . . . 
-. . . . f 5 5 5 5 5 5 f . . . . 
-. . . . . f 5 f f 5 f . . . . . 
-. . . . . f 5 5 5 5 f . . . . . 
-. . . . . . f f f f . . . . . . 
-. . . . . . . . . . . . . . . . 
+. . . . . . 2 2 2 2 . . . . . . 
+. . . . . 2 f f f f 2 . . . . . 
+. . . . 2 f 5 5 5 5 f 2 . . . . 
+. . . 2 f 5 5 5 5 5 5 f 2 . . . 
+. . . 2 f 5 f 5 5 f 5 f 2 . . . 
+. . . 2 f 5 5 5 5 5 5 f 2 . . . 
+. . . . 2 f 5 f f 5 f 2 . . . . 
+. . . . 2 f 5 5 5 5 f 2 . . . . 
+. . . . . 2 f f f f 2 . . . . . 
+. . . . . . 2 2 2 2 . . . . . . 
 . . . . . . . . . . . . . . . . 
 `)
     }
 })
+function tiles2 () {
+    scene.setTile(15, img`
+e b e e e e e e e b e e e e e e 
+e b e e e e e e e b e e e e e e 
+e b e e e e e e e b e e e e e e 
+b b b b b b b b b b b b b b b b 
+e e e e e b e e e e e e e b e e 
+e e e e e b e e e e e e e b e e 
+e e e e e b e e e e e e e b e e 
+b b b b b b b b b b b b b b b b 
+e b e e e e e e e b e e e e e e 
+e b e e e e e e e b e e e e e e 
+e b e e e e e e e b e e e e e e 
+b b b b b b b b b b b b b b b b 
+e e e e e b e e e e e e e b e e 
+e e e e e b e e e e e e e b e e 
+e e e e e b e e e e e e e b e e 
+b b b b b b b b b b b b b b b b 
+`, true)
+    scene.setTile(9, img`
+5 4 4 5 5 4 4 4 4 2 2 2 4 4 4 4 
+4 4 4 4 4 5 5 4 2 2 2 2 4 4 4 5 
+4 2 2 2 4 4 5 4 2 2 4 4 5 5 5 5 
+2 2 4 2 4 4 5 4 2 2 4 5 5 5 5 4 
+2 2 2 2 4 4 5 4 2 2 4 4 5 5 4 4 
+4 2 2 2 4 5 5 4 4 4 4 4 4 4 4 2 
+2 2 2 4 4 5 5 5 4 4 2 2 2 2 2 2 
+4 2 2 4 5 5 5 5 4 2 2 4 2 2 2 4 
+5 4 4 4 4 4 4 5 5 4 2 2 2 4 4 4 
+4 4 4 2 2 2 4 4 5 5 4 4 4 4 5 5 
+4 2 2 2 2 2 2 2 4 5 5 5 5 5 5 5 
+5 4 4 2 4 2 2 4 4 5 5 5 4 4 4 5 
+5 5 4 2 2 2 4 4 4 5 5 4 2 2 2 4 
+4 5 4 4 4 4 5 5 5 5 4 2 4 2 2 4 
+4 5 5 5 5 5 5 4 4 4 2 4 2 4 2 4 
+4 5 5 5 4 4 4 4 2 2 2 2 4 2 4 4 
+`, true)
+    scene.setTile(11, img`
+c b b b b b b b b b b b b b b c 
+c b b b b b b b b b b b b b b c 
+c d d d d d d d d d d d d d d c 
+c d d d d d d d d d d d d d d c 
+c c c c c c c c c c c c c c c c 
+c b b c b b b b b b b b c b b c 
+c d d c b b b b b b b b c d d c 
+c d d c 4 b b 5 5 b b 4 c d d c 
+c d d c b e 5 b b 5 e b c d d c 
+c d d c b e 4 5 5 4 e b c d d c 
+c b b c 4 b 5 4 f 5 b 4 c b b c 
+c d d c b b 4 4 e 4 b b c d d c 
+c d d c b b e 4 4 e b b c d d c 
+c d d c b b b e e b b b c d d c 
+c d d c b b b b b b b b c d d c 
+a c c c c c c c c c c c c c c a 
+`, true)
+    scene.setTile(5, img`
+. . . . . . . . . . . . . . . . 
+. . . . . . 4 4 4 4 . . . . . . 
+. . . . 4 4 4 5 5 4 4 4 . . . . 
+. . . 3 3 3 3 4 4 4 4 4 4 . . . 
+. . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
+. . 3 3 3 3 3 2 2 2 1 1 5 4 . . 
+. 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
+. 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
+. 4 4 3 3 2 2 4 4 4 4 4 4 4 4 . 
+. 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
+. . 4 2 3 3 2 4 4 4 4 4 2 4 . . 
+. . 4 2 2 3 2 2 4 4 4 2 4 4 . . 
+. . . 4 2 2 2 2 2 2 2 2 4 . . . 
+. . . . 4 4 2 2 2 2 4 4 . . . . 
+. . . . . . 4 4 4 4 . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, true)
+    scene.setTile(8, img`
+b b b b b b b b b b b b b b b b 
+b c b e 4 4 4 4 4 4 4 4 e b c b 
+b b e 4 4 4 4 4 4 4 4 4 4 e b b 
+b b 4 4 4 4 4 4 4 4 4 4 4 4 b b 
+b b 4 4 4 4 4 4 4 4 4 4 4 4 b b 
+b b 4 4 4 4 4 4 4 4 4 4 4 4 b b 
+b b 4 4 4 4 4 4 4 4 4 4 4 4 b b 
+b b 4 4 4 4 4 4 4 4 4 4 4 4 b b 
+b b d 4 4 4 4 4 4 4 4 4 4 d b b 
+b b d 4 4 4 4 4 4 4 4 4 4 d b b 
+b b 4 d 4 4 4 4 4 4 4 4 d 4 b b 
+b b 4 4 d d d d d d d d 4 4 b b 
+b b c 4 4 4 4 4 4 4 4 4 4 c b b 
+b b b c c c c c c c c c c b b b 
+b c b b b b b b b b b b b b c b 
+b b b b b b b b b b b b b b b b 
+`, true)
+    // boss
+    scene.setTile(7, img`
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+`, false)
+}
 // goal
 scene.onHitTile(SpriteKind.Player, 8, function (sprite) {
     info.changeScoreBy(1)
@@ -458,28 +569,30 @@ a c c c c c c c c c c c c c c a
     }
     if (info.score() == 6) {
         game.splash("boss hp displayed", "top right corner")
+        game.splash("you can now shoot with", "space bar/A")
+        game.splash("press keyboard X", "for sudden speed boost")
         scene.setTileMap(img`
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
-9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
-9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
-9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
-9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
-9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
-9 9 9 1 1 1 1 7 1 1 1 1 1 9 9 9 
-9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
-9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
-9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
-9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
-9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
-9 9 9 1 1 1 1 1 1 1 1 4 1 9 9 9 
+9 9 9 1 1 1 e 1 1 e 1 1 1 9 9 9 
+9 9 9 1 1 e e e e e e 1 1 9 9 9 
+9 9 9 1 e e e e e e e e 1 9 9 9 
+9 9 9 1 1 e e e e e e 1 1 9 9 9 
+9 9 9 1 1 e e e e e e 1 1 9 9 9 
+9 9 9 1 1 e e 7 e e e 1 1 9 9 9 
+9 9 9 1 1 e e e e e e 1 1 9 9 9 
+9 9 9 1 1 e e e e e e 1 1 9 9 9 
+9 9 9 1 1 e e e e e e 1 1 9 9 9 
+9 9 9 1 e e e e e e e e 1 9 9 9 
+9 9 9 1 1 e e e e e e 1 1 9 9 9 
+9 9 9 1 1 1 e 1 1 e 1 4 1 9 9 9 
 9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 `)
         scene.placeOnRandomTile(mySprite, 4)
         controller.moveSprite(mySprite, 110, 110)
         mySprite.ay = 0
-        for (let value of scene.getTilesByType(7)) {
+        for (let value2 of scene.getTilesByType(7)) {
             boss = sprites.create(img`
 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
@@ -498,106 +611,12 @@ a c c c c c c c c c c c c c c a
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 
 `, SpriteKind.Enemy)
-            scene.place(value, boss)
+            scene.place(value2, boss)
         }
         // boss hitpoint
         info.player2.setScore(150)
-        info.player1.setLife(30)
-    }
-}
-function tiles2 () {
-    scene.setTile(15, img`
-e b e e e e e e e b e e e e e e 
-e b e e e e e e e b e e e e e e 
-e b e e e e e e e b e e e e e e 
-b b b b b b b b b b b b b b b b 
-e e e e e b e e e e e e e b e e 
-e e e e e b e e e e e e e b e e 
-e e e e e b e e e e e e e b e e 
-b b b b b b b b b b b b b b b b 
-e b e e e e e e e b e e e e e e 
-e b e e e e e e e b e e e e e e 
-e b e e e e e e e b e e e e e e 
-b b b b b b b b b b b b b b b b 
-e e e e e b e e e e e e e b e e 
-e e e e e b e e e e e e e b e e 
-e e e e e b e e e e e e e b e e 
-b b b b b b b b b b b b b b b b 
-`, true)
-    scene.setTile(9, img`
-5 4 4 5 5 4 4 4 4 2 2 2 4 4 4 4 
-4 4 4 4 4 5 5 4 2 2 2 2 4 4 4 5 
-4 2 2 2 4 4 5 4 2 2 4 4 5 5 5 5 
-2 2 4 2 4 4 5 4 2 2 4 5 5 5 5 4 
-2 2 2 2 4 4 5 4 2 2 4 4 5 5 4 4 
-4 2 2 2 4 5 5 4 4 4 4 4 4 4 4 2 
-2 2 2 4 4 5 5 5 4 4 2 2 2 2 2 2 
-4 2 2 4 5 5 5 5 4 2 2 4 2 2 2 4 
-5 4 4 4 4 4 4 5 5 4 2 2 2 4 4 4 
-4 4 4 2 2 2 4 4 5 5 4 4 4 4 5 5 
-4 2 2 2 2 2 2 2 4 5 5 5 5 5 5 5 
-5 4 4 2 4 2 2 4 4 5 5 5 4 4 4 5 
-5 5 4 2 2 2 4 4 4 5 5 4 2 2 2 4 
-4 5 4 4 4 4 5 5 5 5 4 2 4 2 2 4 
-4 5 5 5 5 5 5 4 4 4 2 4 2 4 2 4 
-4 5 5 5 4 4 4 4 2 2 2 2 4 2 4 4 
-`, true)
-    scene.setTile(11, img`
-c b b b b b b b b b b b b b b c 
-c b b b b b b b b b b b b b b c 
-c d d d d d d d d d d d d d d c 
-c d d d d d d d d d d d d d d c 
-c c c c c c c c c c c c c c c c 
-c b b c b b b b b b b b c b b c 
-c d d c b b b b b b b b c d d c 
-c d d c 4 b b 5 5 b b 4 c d d c 
-c d d c b e 5 b b 5 e b c d d c 
-c d d c b e 4 5 5 4 e b c d d c 
-c b b c 4 b 5 4 f 5 b 4 c b b c 
-c d d c b b 4 4 e 4 b b c d d c 
-c d d c b b e 4 4 e b b c d d c 
-c d d c b b b e e b b b c d d c 
-c d d c b b b b b b b b c d d c 
-a c c c c c c c c c c c c c c a 
-`, true)
-    scene.setTile(5, img`
-. . . . . . . . . . . . . . . . 
-. . . . . . 4 4 4 4 . . . . . . 
-. . . . 4 4 4 5 5 4 4 4 . . . . 
-. . . 3 3 3 3 4 4 4 4 4 4 . . . 
-. . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
-. . 3 3 3 3 3 2 2 2 1 1 5 4 . . 
-. 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
-. 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
-. 4 4 3 3 2 2 4 4 4 4 4 4 4 4 . 
-. 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
-. . 4 2 3 3 2 4 4 4 4 4 2 4 . . 
-. . 4 2 2 3 2 2 4 4 4 2 4 4 . . 
-. . . 4 2 2 2 2 2 2 2 2 4 . . . 
-. . . . 4 4 2 2 2 2 4 4 . . . . 
-. . . . . . 4 4 4 4 . . . . . . 
-. . . . . . . . . . . . . . . . 
-`, true)
-    scene.setTile(8, img`
-b b b b b b b b b b b b b b b b 
-b c b e 4 4 4 4 4 4 4 4 e b c b 
-b b e 4 4 4 4 4 4 4 4 4 4 e b b 
-b b 4 4 4 4 4 4 4 4 4 4 4 4 b b 
-b b 4 4 4 4 4 4 4 4 4 4 4 4 b b 
-b b 4 4 4 4 4 4 4 4 4 4 4 4 b b 
-b b 4 4 4 4 4 4 4 4 4 4 4 4 b b 
-b b 4 4 4 4 4 4 4 4 4 4 4 4 b b 
-b b d 4 4 4 4 4 4 4 4 4 4 d b b 
-b b d 4 4 4 4 4 4 4 4 4 4 d b b 
-b b 4 d 4 4 4 4 4 4 4 4 d 4 b b 
-b b 4 4 d d d d d d d d 4 4 b b 
-b b c 4 4 4 4 4 4 4 4 4 4 c b b 
-b b b c c c c c c c c c c b b b 
-b c b b b b b b b b b b b b c b 
-b b b b b b b b b b b b b b b b 
-`, true)
-    // boss
-    scene.setTile(7, img`
+        info.player1.setLife(50)
+        scene.setTile(14, img`
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
@@ -615,6 +634,7 @@ b b b b b b b b b b b b b b b b
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 `, false)
+    }
 }
 info.onCountdownEnd(function () {
     if (info.score() < 6) {
@@ -665,11 +685,11 @@ game.splash("levels=score")
 create()
 tiles2()
 levels()
-game.onUpdateInterval(2000, function () {
+game.onUpdateInterval(1500, function () {
     if (info.score() == 6) {
-        if (info.player2.score() >= 50) {
+        if (info.player2.score() > 50) {
             for (let index = 0; index < 2; index++) {
-                scene.placeOnRandomTile(boss, 1)
+                scene.placeOnRandomTile(boss, 14)
                 projectile2 = sprites.createProjectileFromSprite(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -688,6 +708,24 @@ game.onUpdateInterval(2000, function () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, boss, 0, 100)
+                projectile2 = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . f f f f f f f f f f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f f f f f f f f f f . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, boss, -50, 50)
                 projectile2 = sprites.createProjectileFromSprite(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -724,6 +762,24 @@ game.onUpdateInterval(2000, function () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, boss, 0, -100)
+                projectile2 = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . f f f f f f f f f f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f f f f f f f f f f . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, boss, 50, -50)
                 projectile2 = sprites.createProjectileFromSprite(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -795,7 +851,43 @@ game.onUpdateInterval(2000, function () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
+`, boss, 50, 50)
+                projectile2 = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . f f f f f f f f f f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f f f f f f f f f f . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
 `, boss, -100, 0)
+                projectile2 = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . f f f f f f f f f f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f 2 2 2 2 2 2 2 2 f . . . 
+. . . f f f f f f f f f f . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, boss, -50, -50)
                 projectile2 = sprites.createProjectileFromSprite(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -816,7 +908,7 @@ game.onUpdateInterval(2000, function () {
 `, boss, -100, -100)
             }
         } else {
-            boss.follow(mySprite, 110)
+            boss.follow(mySprite, 105)
             boss.setImage(img`
 2 c c c c c c c c c c c c c c 2 
 c c c c c c c c c c c c c c c c 
@@ -834,6 +926,24 @@ c c c f f f f f f f f f f c c c
 c c c c c c c c c c c c c c c c 
 c c c c c c c c c c c c c c c c 
 2 c c c c c c c c c c c c c c 2 
+`)
+            scene.setTileMap(img`
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 1 1 1 1 9 1 9 9 9 9 9 9 9 
+9 9 9 1 1 1 1 1 1 1 1 9 9 9 9 9 
+9 9 9 1 1 1 1 1 1 1 1 1 9 9 9 9 
+9 9 9 1 1 1 1 1 1 1 1 1 9 9 9 9 
+9 9 9 9 1 1 1 1 1 1 1 1 9 9 9 9 
+9 9 9 9 1 1 1 1 1 1 1 1 1 9 9 9 
+9 9 9 9 1 1 1 1 1 1 1 1 1 9 9 9 
+9 9 9 1 1 1 1 7 1 1 1 1 9 9 9 9 
+9 9 9 1 1 1 1 1 1 1 1 1 9 9 9 9 
+9 9 9 9 1 1 1 1 1 1 1 1 9 9 9 9 
+9 9 9 9 1 1 1 1 1 1 1 1 1 9 9 9 
+9 9 9 9 1 1 1 1 1 1 1 1 1 9 9 9 
+9 9 9 9 9 1 1 1 1 1 1 1 1 9 9 9 
+9 9 9 9 9 9 9 1 9 1 1 1 1 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 `)
             for (let index = 0; index < 3; index++) {
                 projectile2 = sprites.createProjectileFromSprite(img`
@@ -981,6 +1091,17 @@ c c c c c c c c c c c c c c c c
 . . . . . . . . . . . . . . . . 
 `, boss, -100, -100)
             }
+        }
+    }
+})
+game.onUpdate(function () {
+    if (info.score() == 6) {
+        if (info.player2.score() > 48 && info.player2.score() <= 50) {
+            info.player2.setScore(48)
+            info.player1.setLife(15)
+            game.splash("phase 2 ")
+            scene.placeOnRandomTile(mySprite, 4)
+            scene.placeOnRandomTile(boss, 7)
         }
     }
 })
