@@ -27,7 +27,7 @@ namespace myTiles {
 sprites.onOverlap(SpriteKind.boom, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.player2.changeScoreBy(Math.randomRange(-1, -2))
     sprite.destroy()
-    if (info.player2.score() == 1) {
+    if (info.player2.score() <= 0) {
         boss.destroy(effects.disintegrate, 1000)
         game.over(true)
     }
@@ -68,6 +68,27 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . . . . . . . . . . . . . 
 `)
     }
+})
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
+    projectile2 = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . f f f f f f f f f f . . . 
+. . . f 5 5 5 5 5 5 5 5 f . . . 
+. . . f 5 5 5 5 5 5 5 5 f . . . 
+. . . f 5 5 5 5 5 5 5 5 f . . . 
+. . . f 5 5 5 5 5 5 5 5 f . . . 
+. . . f 5 5 5 5 5 5 5 5 f . . . 
+. . . f 5 5 5 5 5 5 5 5 f . . . 
+. . . f 5 5 5 5 5 5 5 5 f . . . 
+. . . f 5 5 5 5 5 5 5 5 f . . . 
+. . . f f f f f f f f f f . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, boss, 0, 0)
+    scene.placeOnRandomTile(sprite, 1)
 })
 function tiles2 () {
     scene.setTile(15, img`
@@ -251,7 +272,7 @@ function create () {
     scene.cameraFollowSprite(mySprite)
     controller.moveSprite(mySprite, 70, 0)
     // change this value to set the level
-    info.setScore(1)
+    info.setScore(6)
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (info.score() == 6) {
@@ -589,9 +610,9 @@ a c c c c c c c c c c c c c c a
 9 9 9 1 1 1 1 1 1 1 1 1 1 9 9 9 
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 `)
+        mySprite.ay = 0
         scene.placeOnRandomTile(mySprite, 4)
         controller.moveSprite(mySprite, 110, 110)
-        mySprite.ay = 0
         for (let value2 of scene.getTilesByType(7)) {
             boss = sprites.create(img`
 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 
@@ -615,7 +636,7 @@ a c c c c c c c c c c c c c c a
         }
         // boss hitpoint
         info.player2.setScore(150)
-        info.player1.setLife(50)
+        info.player1.setLife(30)
         scene.setTile(14, img`
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
@@ -668,16 +689,18 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 info.player1.onLifeZero(function () {
     game.over(false)
-    game.splash("try again")
-    info.setScore(6)
-    levels()
+    if (true) {
+        game.splash("try again")
+        info.setScore(6)
+        levels()
+    }
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
     info.player1.changeLifeBy(-1)
     sprite.destroy()
 })
-let projectile2: Sprite = null
 let projectile: Sprite = null
+let projectile2: Sprite = null
 let move: Sprite = null
 let mySprite: Sprite = null
 let boss: Sprite = null
@@ -1095,13 +1118,34 @@ c c c c c c c c c c c c c c c c
     }
 })
 game.onUpdate(function () {
+    if (info.player2.score() > 50 && info.player2.score() < 75) {
+        scene.setTileMap(img`
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 9 9 e e e e e e 9 9 9 9 9 
+9 9 9 9 9 e e e e e e 9 9 9 9 9 
+9 9 9 9 9 e e e e e e 9 9 9 9 9 
+9 9 9 9 9 e e e e e e 9 9 9 9 9 
+9 9 9 9 9 e e 7 e e e 9 9 9 9 9 
+9 9 9 9 9 e e e e e e 9 9 9 9 9 
+9 9 9 9 9 e e e e e e 9 9 9 9 9 
+9 9 9 9 9 e e e e e e 9 9 9 9 9 
+9 9 9 9 9 e e e e e e 9 9 9 9 9 
+9 9 9 9 9 e e e e e e 9 9 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+`)
+    }
+})
+game.onUpdate(function () {
     if (info.score() == 6) {
-        if (info.player2.score() > 48 && info.player2.score() <= 50) {
-            info.player2.setScore(48)
-            info.player1.setLife(15)
+        if (info.player2.score() >= 48 && info.player2.score() <= 50) {
+            info.player2.setScore(47)
+            info.player1.setLife(20)
             game.splash("phase 2 ")
             scene.placeOnRandomTile(mySprite, 4)
-            scene.placeOnRandomTile(boss, 7)
         }
     }
 })
