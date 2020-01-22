@@ -272,7 +272,7 @@ function create () {
     scene.cameraFollowSprite(mySprite)
     controller.moveSprite(mySprite, 70, 0)
     // change this value to set the level
-    info.setScore(6)
+    info.setScore(1)
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (info.score() == 6) {

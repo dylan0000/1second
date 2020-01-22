@@ -1,21 +1,21 @@
 {
     "name": "1second",
+    "description": "",
     "dependencies": {
         "device": "*",
         "color-coded-tilemap": "*",
         "controller": "*"
     },
-    "description": "",
     "files": [
         "main.blocks",
         "main.ts",
         "README.md"
     ],
-    "preferredEditor": "blocksprj",
     "testFiles": [
         "test.ts"
     ],
     "supportedTargets": [
         "arcade"
-    ]
+    ],
+    "preferredEditor": "blocksprj"
 }
